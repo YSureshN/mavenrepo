@@ -18,10 +18,10 @@ public class RegistrationController extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String name = request.getParameter("fullname");
+		String name = request.getParameter("fullName");
 		String Addr = request.getParameter("address");
 		String age = request.getParameter("age");
-		String Qual = request.getParameter("qual");
+		String Qual = request.getParameter("quali");
 		String Persent = request.getParameter("percent");
 		String Year = request.getParameter("yop");
 		if(name.isEmpty()||Addr.isEmpty()||age.isEmpty()||Qual.isEmpty()||Persent.isEmpty()||Year.isEmpty())
@@ -34,19 +34,19 @@ public class RegistrationController extends HttpServlet {
 		{
 			Student student = new Student();
 			student.setStudentName(name);
-        	student.setStudentAddr(Addr);
-        	student.setAge(age);
-        	student.setQualification(Qual);
-        	student.setPercentage(Persent);
-        	student.setYearPassed(Year); 
+			student.setStudentAddr(Addr);
+			student.setAge(age);
+			student.setQualification(Qual);
+			student.setPercentage(Persent);
+			student.setYearPassed(Year); 
 			int status=StudentDAO.saveStudent(student);  
-	        if(status>0){  
-	        	response.sendRedirect("viewStudents");
-	        }else{  
-	            out.println("Sorry! unable to save record");  
-	        }  
-	          
-	        out.close();  
+			if(status>0){  
+				response.sendRedirect("viewStudents");
+			}else{  
+				out.println("Sorry! unable to save record");  
+			}  
+			
+			out.close();  
 			
 		}
 	}
